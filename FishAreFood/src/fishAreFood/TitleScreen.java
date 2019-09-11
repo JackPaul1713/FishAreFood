@@ -1,6 +1,6 @@
 package fishAreFood;
 
-public class Intro
+public class TitleScreen
 {
 
 	welcomeToFishRFood();
