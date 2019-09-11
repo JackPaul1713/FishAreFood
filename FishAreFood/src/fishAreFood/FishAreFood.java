@@ -8,13 +8,13 @@ public class FishAreFood
 		
 	//variables
 	
-	boolean play;
+	boolean want2Play;
 	
 	//action
 	
 	SetScreen.setScreen();
-	/*titleScreen();
-	while (play == true);
+	titleScreen();
+	/*while (play == true);
 	{
 	game();
 	scoreboard();
