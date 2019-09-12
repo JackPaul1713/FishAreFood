@@ -9,16 +9,20 @@ public class FishAreFood
 	//variables
 	
 	boolean want2Play;
+	boolean firstTime = true;
 	
 	//action
 	
 	SetScreen.setScreen();
-	titleScreen();
+	want2Play = TitleScreen.titleScreen(firstTime);
+	firstTime = false;
+	
 	/*while (play == true);
 	{
 	game();
-	scoreboard();
+	titleScreen();
 	}
+	
 	goodbye();*/
 	
 	}

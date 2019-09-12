@@ -1,7 +1,5 @@
 package fishAreFood;
 
-import java.awt.*;
-
 public class TitleScreen
 {
 	
@@ -12,8 +10,6 @@ public class TitleScreen
 		
 		boolean want2Play;
 		
-		addKeyListeners();
-		
 		//action
 		dispName();
 		Scoreboard.scorboard();
@@ -22,14 +18,14 @@ public class TitleScreen
 		{
 			
 			System.out.println("Press enter to play.");
-			System.out.println("Press esc to exit.");
+			System.out.print("Press esc to exit.");
 			
 		}
 		else if (firstTime == false)
 		{
 
 			System.out.println("Press enter to play again.");
-			System.out.println("Press esc to exit.");
+			System.out.print("Press esc to exit.");
 			
 		}
 		
