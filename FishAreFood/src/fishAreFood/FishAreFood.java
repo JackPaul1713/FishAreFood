@@ -6,24 +6,31 @@ public class FishAreFood
 	public static void main(String[] args)
 	{
 		
-	//variables
+		//variables
 	
-	boolean want2Play;
-	boolean firstTime = true;
+		int score = 0; 
+		boolean play = false;
+		boolean firstTime = true;
 	
-	//action
+		//action
 	
-	SetScreen.setScreen();
-	want2Play = TitleScreen.titleScreen(firstTime);
-	firstTime = false;
+		SetScreenSize.setScreen();
+		play = TitleScreen.titleScreen(score); firstTime = false;
 	
-	/*while (play == true);
-	{
-	game();
-	titleScreen();
-	}
+		while (play = true);
+		{
+		
+			score = Game.game();
+			play = TitleScreen.titleScreen(score);
 	
-	goodbye();*/
+		}
+	
+		if (play = false)
+		{
+		
+			Goodbye.goodbye();
+		
+		}
 	
 	}
 	

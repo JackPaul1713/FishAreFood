@@ -1,41 +1,26 @@
 package fishAreFood;
 
+import java.util.Scanner;
+
 public class TitleScreen
 {
 	
-	public static boolean titleScreen(boolean firstTime)
+	public static boolean titleScreen(int score)
 	{
+		//action
+		
+		boolean play;
+		String username;
 		
 		//variables
 		
-		boolean want2Play;
+		username = scoreCheck(score);
 		
-		//action
 		dispName();
-		Scoreboard.scorboard();
+		Scoreboard.scoreboard(score, username);
+		play = askToPlay();
 		
-		if (firstTime == true)
-		{
-			
-			System.out.println("Press enter to play.");
-			System.out.print("Press esc to exit.");
-			
-		}
-		else if (firstTime == false)
-		{
-
-			System.out.println("Press enter to play again.");
-			System.out.print("Press esc to exit.");
-			
-		}
-		
-		//if "enter"
-		want2Play = true;
-		
-		//if "esc"
-		want2Play = false;		
-		
-		return(want2Play);
+		return(play);
 		
 	}
 	
@@ -48,6 +33,37 @@ public class TitleScreen
 		
 	}
 	
+	public static boolean askToPlay()
+	{
+		
+		//variables
+		
+				boolean play = false;
+				String responce;
+				Scanner strInput = new Scanner(System.in);
+				
+				//action
+				
+				System.out.println("Press enter to play. ('Enter')");
+				System.out.print("Press esc to exit. (2)");
+				responce = strInput.nextLine();		
+				
+				if (responce.equals(""))
+				{
+					
+					play = true;
+					
+				}
+				else if (responce.equals("2"))		
+				{
+				
+					play = false;
+				
+				}
+				
+				return(play);
+		
+	}
 	
 	
 }

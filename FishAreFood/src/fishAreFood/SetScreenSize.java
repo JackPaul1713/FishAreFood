@@ -2,7 +2,7 @@ package fishAreFood;
 
 import java.util.Scanner;
 
-public class SetScreen
+public class SetScreenSize
 {
 
 	public static void setScreen()
@@ -10,7 +10,7 @@ public class SetScreen
 	
 		//variables
 		
-		int rows = 12;
+		int rows = 13;
 		int cols = 24;
 		String defaltPixel = "  ";
 		String boarderPixel = "[]";

@@ -8,54 +8,39 @@ public class Game
 		
 		//variables
 		
-		int score;
+		int score = 0;
+		boolean loose;
+		int [][] plantLocation;
+		int [][] itemLocation;
+		int [][] sharkLocation;
+		String [][] defaultScreen;
+		String [][] gameScreen;
 		
 		//action
 		
-		screenIntro();
-		score = screenShift();
-	
+		defaultScreen = makeDefaultScreen();
+		gameScreen = makeGameScreen();
+		plantLocation = makePlantLocation();
+		itemLocation = makeItemLocation();
+		sharkLocation = makeSharkLocation();
+		
+		while (loose = false)
+		{
+
+			gameScreen = setGameScreen(defaultScreen, plantLocation, itemLocation, sharkLocation);
+			printGameScreen();
+
+			score = checkSharkLocationScore();
+			loose = checkSharkLocationLoose();
+
+			plantLocation = plantShift(plantLocation);
+			itemLocation = itemShift(itemLocation);
+			sharkLocation = sharkShift(sharkLoaction); // get input here too
+
+		}
+		
 		return(score);
 		
 	}
 	
-	public static void screenIntro() throws InterruptedException
-	{
-		
-		//variables
-		
-		String defaultPixel = "";
-		String dp = defaultPixel;
-		String sharkPixel = "";
-		String sp = sharkPixel;
-		
-		//action
-		
-		System.out.println("\nO O O O O O O O O O O O O O O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O S O O O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O S S O O O O O O O O O O O");
-		System.out.println("O O O O O O O S O S S S S S S S O O O O O O O O");
-		System.out.println("O O O O O O O O S S S S S S S O O O O O O O O O");
-		System.out.println("O O O O O O O S O O S S S O O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O S O S O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
-		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
-		System.out.print("O O O O O O O O O O O O O O O O O O O O O O O O");
-		
-		Thread.sleep(1 * 1000 / 4);
-		
-	}
-	
-	public static int screenShift()
-	{
-		
-		screenSharkShift();
-		screenFishNMinesShift();
-		
-	}
-	
 }
-
-//KeyListener
