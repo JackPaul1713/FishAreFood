@@ -22,6 +22,15 @@ public class Game
 	public static void screenIntro() throws InterruptedException
 	{
 		
+		//variables
+		
+		String defaultPixel = "";
+		String dp = defaultPixel;
+		String sharkPixel = "";
+		String sp = sharkPixel;
+		
+		//action
+		
 		System.out.println("\nO O O O O O O O O O O O O O O O O O O O O O O O");
 		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
 		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
