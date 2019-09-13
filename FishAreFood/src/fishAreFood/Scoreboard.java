@@ -3,8 +3,15 @@ package fishAreFood;
 public class Scoreboard
 {
 
-	public static void scoreboard(int score, String username)
+	public static void scoreboard(int score)
 	{
+		
+		//variables
+		
+		String username;
+		
+		//action
+		username = scoreCheck(score);
 		
 		System.out.println("");
 		System.out.println("0 0 0 0  High Scores  0 0 0 0");

@@ -14,10 +14,8 @@ public class TitleScreen
 		
 		//variables
 		
-		username = scoreCheck(score);
-		
 		dispName();
-		Scoreboard.scoreboard(score, username);
+		Scoreboard.scoreboard(score);
 		play = askToPlay();
 		
 		return(play);
