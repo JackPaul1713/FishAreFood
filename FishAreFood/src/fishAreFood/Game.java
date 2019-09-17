@@ -371,6 +371,8 @@ public class Game
 	public static int checkSharkLocationScore(int score)
 	{
 		
+		//removeItem
+		
 		return(score);
 		
 	}
@@ -379,6 +381,8 @@ public class Game
 	
 	public static boolean checkSharkLocationLoose(boolean loose)
 	{
+		
+		//removeItem
 		
 		return(loose);
 		
