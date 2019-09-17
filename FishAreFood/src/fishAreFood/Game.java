@@ -523,8 +523,6 @@ public class Game
 		
 		//shiftLocation
 		
-		System.out.println("test");
-		
 		if (sharkLocation[0][0] > 0)
 		{
 
