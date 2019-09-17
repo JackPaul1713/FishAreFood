@@ -1,5 +1,7 @@
 package fishAreFood;
 
+import java.util.Scanner;
+
 public class Game
 {
 
@@ -9,7 +11,9 @@ public class Game
 		//variables
 		
 		int score = 0;
+		int speed = 1 * 1000 / 3;
 		boolean loose = false;
+		String sharkShift;
 		String defaultPixel = "- ";
 		String groundPixel = "M ";
 		String plantPixel = "| ";
@@ -35,16 +39,16 @@ public class Game
 		{
 
 			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
-			printGameScreen(gameScreen);
+			sharkShift = printGameScreen(gameScreen, score);
 
-			Thread.sleep(1 * 1000 / 3);
+			//Thread.sleep(speed); add with keyScanner
 			
 			score = checkSharkLocationScore(score);
 			loose = checkSharkLocationLoose(loose);
 
 			plantLocation = plantShift(plantLocation);
 			itemLocation = itemShift(itemLocation);
-			sharkLocation = sharkShift(sharkLocation);
+			sharkLocation = sharkShift(sharkLocation, sharkShift);
 
 		}
 		
@@ -326,7 +330,7 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static void printGameScreen(String[][] gameScreen)
+	public static String printGameScreen(String[][] gameScreen, int score)
 	{
 		
 		//variables
@@ -335,8 +339,14 @@ public class Game
 		int gameScreenCols = 24;
 		int rows = gameScreenRows;
 		int cols = gameScreenCols;
+		String sharkShift;
+		Scanner strInput = new Scanner(System.in);
 		
-		//print screen
+		//printScore
+		
+		System.out.print("\nFishRFood                            Score = " + score);
+		
+		//printScreen
 		
 		for (int r = 0; r < rows; r++)
 		{
@@ -344,7 +354,7 @@ public class Game
 			if (r == 0)
 			{
 				
-				System.out.println("\n");
+				System.out.print("\n");
 				
 			}
 			
@@ -363,6 +373,14 @@ public class Game
 			}
 			
 		}
+		
+		//getSharkShift
+		
+		sharkShift = strInput.nextLine();
+		
+		//returnSharkShift
+		
+		return(sharkShift);
 		
 	}
 	
@@ -500,14 +518,50 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static int[][] sharkShift(int[][] sharkLocation)
+	public static int[][] sharkShift(int[][] sharkLocation, String sharkShift)
 	{
 		
-		//variables
-		
-		//scannForInput
-		
 		//shiftLocation
+		
+		System.out.println("test");
+		
+		if (sharkLocation[0][0] > 0)
+		{
+
+			if (sharkShift.equals("u"))
+			{
+
+				sharkLocation[0][0] = sharkLocation[0][0] - 1;
+				sharkLocation[0][1] = sharkLocation[0][1] - 1;
+				sharkLocation[0][2] = sharkLocation[0][2] - 1;
+				sharkLocation[0][3] = sharkLocation[0][3] - 1;
+				sharkLocation[0][4] = sharkLocation[0][4] - 1;
+				sharkLocation[0][5] = sharkLocation[0][5] - 1;
+				sharkLocation[0][6] = sharkLocation[0][6] - 1;
+				sharkLocation[0][7] = sharkLocation[0][7] - 1;
+
+			} 
+			
+		}
+		
+		if (sharkLocation[0][7] < 13)
+		{
+
+			if (sharkShift.equals("d"))
+			{
+
+				sharkLocation[0][0] = sharkLocation[0][0] + 1;
+				sharkLocation[0][1] = sharkLocation[0][1] + 1;
+				sharkLocation[0][2] = sharkLocation[0][2] + 1;
+				sharkLocation[0][3] = sharkLocation[0][3] + 1;
+				sharkLocation[0][4] = sharkLocation[0][4] + 1;
+				sharkLocation[0][5] = sharkLocation[0][5] + 1;
+				sharkLocation[0][6] = sharkLocation[0][6] + 1;
+				sharkLocation[0][7] = sharkLocation[0][7] + 1;
+
+			} 
+			
+		}
 		
 		//returnLocation
 		

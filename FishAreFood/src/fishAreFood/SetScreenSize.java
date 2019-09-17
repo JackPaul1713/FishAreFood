@@ -10,7 +10,7 @@ public class SetScreenSize
 	
 		//variables
 		
-		int rows = 13;
+		int rows = 14;
 		int cols = 24;
 		String defaltPixel = "  ";
 		String boarderPixel = "[]";
