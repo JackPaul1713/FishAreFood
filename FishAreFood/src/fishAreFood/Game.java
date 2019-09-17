@@ -3,14 +3,14 @@ package fishAreFood;
 public class Game
 {
 
-	public static int game()
+	public static int game() throws InterruptedException
 	{
 		
 		//variables
 		
 		int score = 0;
 		boolean loose = false;
-		String defaultPixel = "0 ";
+		String defaultPixel = "- ";
 		String groundPixel = "M ";
 		String plantPixel = "| ";
 		String fishPixel = "F ";
@@ -25,7 +25,7 @@ public class Game
 		
 		//action
 		
-		defaultScreen = makeDefaultScreen(defaultPixel, groundPixel);
+		defaultScreen = makeDefaultScreen(defaultPixel);
 		gameScreen = makeGameScreen();
 		plantLocation = makePlantLocation();
 		itemLocation = makeItemLocation();
@@ -34,15 +34,17 @@ public class Game
 		while (loose == false)
 		{
 
-			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, plantPixel, fishPixel, trashPixel, minePixel, sharkPixel);
+			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
 			printGameScreen(gameScreen);
 
-			/*score = checkSharkLocationScore();
-			loose = checkSharkLocationLoose();
+			Thread.sleep(1 * 1000 / 3);
+			
+			score = checkSharkLocationScore(score);
+			loose = checkSharkLocationLoose(loose);
 
 			plantLocation = plantShift(plantLocation);
 			itemLocation = itemShift(itemLocation);
-			sharkLocation = sharkShift(sharkLoaction);*/ // get input here too
+			sharkLocation = sharkShift(sharkLocation);
 
 		}
 		
@@ -52,7 +54,7 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static String[][] makeDefaultScreen(String dp, String gp)
+	public static String[][] makeDefaultScreen(String dp)
 	{
 		
 		//variables
@@ -61,7 +63,7 @@ public class Game
 		int cols = 24;
 		String [][] defaultScreen = new String [rows][cols];
 		
-		//action
+		//fillDefaultScreen
 		
 		for (int r = 0; r < rows; r++)
 		{
@@ -72,6 +74,8 @@ public class Game
 				
 			}
 		}
+		
+		//returnDefaultScreen
 		
 		return(defaultScreen);
 		
@@ -88,7 +92,7 @@ public class Game
 		int cols = 24;
 		String[][] gameScreen = new String [rows][cols];
 		
-		//action
+		//returnGameScreen
 		
 		return(gameScreen);
 		
@@ -101,15 +105,43 @@ public class Game
 		
 		//variables
 		
-		int rows = 2;
+		int rows = 4;
 		int cols = 24;
 		int[][] plantLocation = new int [rows][cols];
 		
-		//action
+		//fillPlantLocation (format - row[1]=row, row[2]=col, row[3]=var(0=noPlant, 1=Plant))
+		
+		for (int c = 0; c < cols; c++)
+		{
+			
+			plantLocation [0][c] = 10;
+				
+		}
+		
+		for (int c = 0; c < cols; c++)
+		{
+			
+			plantLocation [1][c] = c;
+				
+		}
+		
+		for (int c = 0; c < cols; c++)
+		{
+			
+			plantLocation [2][c] = 0;
+				
+		}
+		
+		for (int c = 0; c < cols; c++)
+		{
+			
+			plantLocation [3][c] = 0;
+				
+		}
+		
+		//returnPlantLocation
 		
 		return(plantLocation);
-		
-		//format - row[1] = row, row[2] = col, row[3] = var
 		
 	}
 	
@@ -124,11 +156,32 @@ public class Game
 		int cols = 24;
 		int[][] itemLocation = new int [rows][cols];
 		
-		//action
+		//fillItemLocation (format - row[1]=row, row[2]=col, row[3]=var(0=DefaultPixel, 1=F, 2=T, 3=X))
+		
+		for (int c = 0; c < cols; c++)
+		{
+					
+			itemLocation [0][c] = 0;
+						
+		}
+		
+		for (int c = 0; c < cols; c++)
+		{
+					
+			itemLocation [1][c] = c;
+						
+		}
+		
+		for (int c = 0; c < cols; c++)
+		{
+					
+			itemLocation [2][c] = 0;
+						
+		}
+		
+		//returnItemLocation 
 		
 		return(itemLocation);
-		
-		//format - row[1]=row, row[2]=col, row[3]=var(1=F, 2=T, 3=X)
 		
 	}
 	
@@ -143,65 +196,124 @@ public class Game
 		int cols = 8;
 		int[][] sharkLocation = new int [rows][cols];
 		
-		//action
+		//fillSharkLocation
+		
+		sharkLocation [0][0] = 4;
+		sharkLocation [1][0] = 1;
+		
+		sharkLocation [0][1] = 4;
+		sharkLocation [1][1] = 4;
+		
+		sharkLocation [0][2] = 5;
+		sharkLocation [1][2] = 2;
+		
+		sharkLocation [0][3] = 5;
+		sharkLocation [1][3] = 3;
+		
+		sharkLocation [0][4] = 5;
+		sharkLocation [1][4] = 4;
+		
+		sharkLocation [0][5] = 5;
+		sharkLocation [1][5] = 5;
+		
+		sharkLocation [0][6] = 6;
+		sharkLocation [1][6] = 1;
+		
+		sharkLocation [0][7] = 6;
+		sharkLocation [1][7] = 3;
+	
+		//returnSharkLocation
 		
 		return(sharkLocation);
-		
-		//format - row[1] = row, row[2] = col
 		
 	}
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static String[][] setGameScreen(String[][] defaultScreen, String[][] gameScreen, int[][] plantLocation, int[][] itemLocation, int[][] sharkLocation, String pp, String fp, String tp, String mp, String sp)
+	public static String[][] setGameScreen(String[][] defaultScreen, String[][] gameScreen, int[][] plantLocation, int[][] itemLocation, int[][] sharkLocation, String pp, String gp, String fp, String tp, String mp, String sp)
 	{
 		
 		//variables
 		
+		int rows = 12;
+		int cols = 24;
 		int plantCols = 24;
+		int groundCols = 24;
 		int itemCols = 24;
 		int sharkCols = 8;
 		
-		//action
+		//resetScreen
 		
-		gameScreen = defaultScreen;
+		for (int r = 0; r < rows; r++)
+		{
+			for (int c = 0; c < cols; c++)
+			{
+			
+				gameScreen [r][c] = defaultScreen [r][c];
+				
+			}
+		}
 		
-		for (int pc = 0; pc > plantCols; pc ++)
+		//addGround
+		
+		for(int gc = 0; gc < groundCols; gc++)
+		{
+					
+			gameScreen [11][gc] = gp;
+					
+		}
+		
+		//addPlants
+		
+		for (int pc = 0; pc < plantCols; pc ++)
 		{
 			
-			gameScreen [sharkLocation[0][pc]][sharkLocation[1][pc]] = pp;
+			
+			if (plantLocation[2][pc] == 1)
+			{
+				
+				gameScreen [plantLocation[0][pc]][plantLocation[1][pc]] = pp;
+				
+				if (plantLocation[3][pc] == 1)
+				{
+					
+					gameScreen [plantLocation[0][pc] - 1][plantLocation[1][pc]] = pp;
+					
+				}
+			
+			}
 			
 		}
 		
-		//set gorund
+		//addItems
 		
-		for (int ic = 0; ic > itemCols; ic ++)
+		for (int ic = 0; ic < itemCols; ic ++)
 		{
 			
-			if (sharkLocation[2][ic] == 0) //F
+			if (itemLocation[2][ic] == 1) //F
 			{
 			
-				gameScreen [sharkLocation[0][ic]][sharkLocation[1][ic]] = fp;
+				gameScreen [itemLocation[0][ic]][itemLocation[1][ic]] = fp;
 				
 			}
-			
-			if (sharkLocation[2][ic] == 1) //T
+			else if (itemLocation[2][ic] == 2) //T
 			{
 			
-				gameScreen [sharkLocation[0][ic]][sharkLocation[1][ic]] = tp;
+				gameScreen [itemLocation[0][ic]][itemLocation[1][ic]] = tp;
 				
 			}
-			
-			if (sharkLocation[2][ic] == 2) //X
+			else if (itemLocation[2][ic] == 3) //X
 			{
 			
-				gameScreen [sharkLocation[0][ic]][sharkLocation[1][ic]] = mp;
+				gameScreen [itemLocation[0][ic]][itemLocation[1][ic]] = mp;
 				
 			}
 			
 		}
 		
-		for (int sc = 0; sc > sharkCols; sc ++)
+		//addShark
+		
+		for (int sc = 0; sc < sharkCols; sc ++)
 		{
 			
 			gameScreen [sharkLocation[0][sc]][sharkLocation[1][sc]] = sp;
@@ -224,7 +336,7 @@ public class Game
 		int rows = gameScreenRows;
 		int cols = gameScreenCols;
 		
-		//action
+		//print screen
 		
 		for (int r = 0; r < rows; r++)
 		{
@@ -251,6 +363,151 @@ public class Game
 			}
 			
 		}
+		
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////
+	
+	public static int checkSharkLocationScore(int score)
+	{
+		
+		return(score);
+		
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////
+	
+	public static boolean checkSharkLocationLoose(boolean loose)
+	{
+		
+		return(loose);
+		
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////
+	
+	public static int[][] plantShift(int[][] plantLocation)
+	{
+		
+		//variables
+		
+		double randomNumber3 = (int) (Math.random() * 3 + 1);
+		int randomNumberHeight = (int) randomNumber3;
+		
+		double randomNumber4 = (int) (Math.random() * 4 + 1);
+		int randomNumberPlant = (int) randomNumber4;
+
+		//shiftLocation
+		
+		for(int pc = 0; pc < 23; pc++)
+		{
+			
+			plantLocation[2][pc] = plantLocation[2][pc + 1];
+			plantLocation[3][pc] = plantLocation[3][pc + 1];
+			
+		}
+		
+		//generateNewLocation
+		
+		if (randomNumberPlant == 4)
+		{
+			
+			plantLocation[2][23] = 1;
+			
+			if (randomNumberHeight == 3)
+			{
+				
+				plantLocation[3][23] = 1;
+				
+			}	
+				
+		}
+		else
+		{
+			
+			plantLocation[2][23] = 0;
+			plantLocation[3][23] = 0;
+			
+		}
+				
+		//returnLocation
+		
+		return(plantLocation);
+		
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////
+	
+	public static int[][] itemShift(int[][] itemLocation)
+	{
+		
+		// variables
+
+		double randomNumber10 = (int) (Math.random() * 10);
+		int randomNumberLocation = (int) randomNumber10;
+
+		double randomNumber11 = (int) (Math.random() * 22);
+		int randomNumberType = (int) randomNumber11;
+
+		// shiftLocation
+
+		for (int ic = 0; ic < 23; ic++)
+		{
+
+			itemLocation[0][ic] = itemLocation[0][ic + 1];
+			itemLocation[2][ic] = itemLocation[2][ic + 1];
+
+		}
+
+		// generateNewLocation
+
+		itemLocation[0][23] = randomNumberLocation;
+		
+		if (randomNumberType >= 0 && randomNumberType <= 14)
+		{
+		
+			itemLocation[2][23] = 0;
+			
+		}
+		else if (randomNumberType >= 15 && randomNumberType <= 18)
+		{
+			
+			itemLocation[2][23] = 1;
+			
+		}
+		else if (randomNumberType >= 19 && randomNumberType <= 20)
+		{
+			
+			itemLocation[2][23] = 2;
+			
+		}
+		else if (randomNumberType == 21)
+		{
+			
+			itemLocation[2][23] = 3;
+			
+		}
+			
+		// returnLocation
+
+		return (itemLocation);
+
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////
+	
+	public static int[][] sharkShift(int[][] sharkLocation)
+	{
+		
+		//variables
+		
+		//scannForInput
+		
+		//shiftLocation
+		
+		//returnLocation
+		
+		return(sharkLocation);
 		
 	}
 	
