@@ -42,8 +42,8 @@ public class TitleScreen
 				
 				//action
 				
-				System.out.println("Press enter to play. ('Enter')");
-				System.out.print("Press esc to exit. (2)");
+				System.out.println("Press enter to play.");
+				System.out.print("Press esc to exit.");
 				responce = strInput.nextLine();		
 				
 				if (responce.equals(""))

@@ -9,7 +9,7 @@ public class FishAreFood
 		//variables
 	
 		int score = 0; 
-		boolean play = false;
+		boolean play = true;
 		boolean firstTime = true;
 	
 		//action
@@ -17,7 +17,7 @@ public class FishAreFood
 		SetScreenSize.setScreen();
 		play = TitleScreen.titleScreen(score); firstTime = false;
 	
-		while (play = true);
+		while (play = true)
 		{
 		
 			score = Game.game();
