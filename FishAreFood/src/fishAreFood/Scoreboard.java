@@ -11,7 +11,7 @@ public class Scoreboard
 		String username;
 		
 		//action
-		username = scoreCheck(score);
+		//username = scoreCheck(score);
 		
 		System.out.println("");
 		System.out.println("0 0 0 0  High Scores  0 0 0 0");

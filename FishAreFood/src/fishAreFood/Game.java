@@ -41,10 +41,10 @@ public class Game
 			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, defaultPixel, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
 			sharkShift = printGameScreen(gameScreen, score);
 
-			//Thread.sleep(speed); add with keyScanner
+			Thread.sleep(speed); //add with keyScanner
 			
 			score = checkSharkLocationScore(itemLocation, sharkLocation, score);
-			loose = checkSharkLocationLoose(itemLocation, sharkLocation, loose);
+			loose = checkSharkLocationLoose(gameScreen, itemLocation, sharkLocation, minePixel, score, loose);
 
 			plantLocation = plantShift(plantLocation);
 			itemLocation = itemShift(itemLocation);
@@ -325,15 +325,6 @@ public class Game
 			
 		}
 		
-		//deadShark
-		
-		/*if (loose = true)
-		{
-			
-			sp = mp;
-			
-		}*/ 
-		
 		return(gameScreen);
 		
 	}
@@ -349,7 +340,7 @@ public class Game
 		int gameScreenCols = 24;
 		int rows = gameScreenRows;
 		int cols = gameScreenCols;
-		String sharkShift;
+		String sharkShift = "";
 		Scanner strInput = new Scanner(System.in);
 		
 		//printScore
@@ -385,8 +376,8 @@ public class Game
 		}
 		
 		//getSharkShift
-		
-		sharkShift = strInput.nextLine();
+	
+		//sharkShift = strInput.nextLine();
 		
 		//returnSharkShift
 		
@@ -438,11 +429,13 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static boolean checkSharkLocationLoose(int[][] itemLocation, int[][] sharkLocation, boolean loose)
+	public static boolean checkSharkLocationLoose(String[][] gameScreen, int[][] itemLocation, int[][] sharkLocation, String mp, int score, boolean loose)
 	{
 		
 		//variables
 		
+		int rows = 11;
+		int cols = 24;
 		int itemCols = 24;
 		int sharkCols = 8;
 				
@@ -454,11 +447,43 @@ public class Game
 			for (int sc = 0; sc < sharkCols; sc++)
 			{
 
+				gameScreen [sharkLocation[0][sc]][sharkLocation[1][sc]] = mp;
+				
 				if ((sharkLocation[0][sc] == itemLocation[0][ic] && sharkLocation[1][sc] == itemLocation[1][ic]) && itemLocation[2][ic] == 3)
 				{
-
+					
 					itemLocation[2][ic] = 0;
-					System.out.print("BOOM! You hit a mine. Game Over");
+					
+					System.out.print("\nFishRFood                            Score = " + score);
+					
+					for (int r = 0; r < rows; r++)
+					{
+						
+						if (r == 0)
+						{
+							
+							System.out.print("\n");
+							
+						}
+						
+						for (int c = 0; c < cols; c++)
+						{
+						
+							System.out.print(gameScreen [r][c]);
+							
+						}
+						
+						if (r < rows - 1)
+						{
+							
+							System.out.print("\n");
+						
+						}
+						
+					}
+					
+					System.out.print("\nM M M BOOM! You hit a mine!? GAME OVER. M M M M");
+					
 					loose = true;
 					
 				}
