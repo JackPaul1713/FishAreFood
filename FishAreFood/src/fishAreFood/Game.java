@@ -38,13 +38,13 @@ public class Game
 		while (loose == false)
 		{
 
-			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
+			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, defaultPixel, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
 			sharkShift = printGameScreen(gameScreen, score);
 
 			//Thread.sleep(speed); add with keyScanner
 			
-			score = checkSharkLocationScore(score);
-			loose = checkSharkLocationLoose(loose);
+			score = checkSharkLocationScore(itemLocation, sharkLocation, score);
+			loose = checkSharkLocationLoose(itemLocation, sharkLocation, loose);
 
 			plantLocation = plantShift(plantLocation);
 			itemLocation = itemShift(itemLocation);
@@ -234,7 +234,7 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static String[][] setGameScreen(String[][] defaultScreen, String[][] gameScreen, int[][] plantLocation, int[][] itemLocation, int[][] sharkLocation, String pp, String gp, String fp, String tp, String mp, String sp)
+	public static String[][] setGameScreen(String[][] defaultScreen, String[][] gameScreen, int[][] plantLocation, int[][] itemLocation, int[][] sharkLocation, String dp, String pp, String gp, String fp, String tp, String mp, String sp)
 	{
 		
 		//variables
@@ -294,6 +294,7 @@ public class Game
 		for (int ic = 0; ic < itemCols; ic ++)
 		{
 			
+		
 			if (itemLocation[2][ic] == 1) //F
 			{
 			
@@ -323,6 +324,15 @@ public class Game
 			gameScreen [sharkLocation[0][sc]][sharkLocation[1][sc]] = sp;
 			
 		}
+		
+		//deadShark
+		
+		/*if (loose = true)
+		{
+			
+			sp = mp;
+			
+		}*/ 
 		
 		return(gameScreen);
 		
@@ -386,10 +396,41 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static int checkSharkLocationScore(int score)
+	public static int checkSharkLocationScore(int[][] itemLocation, int[][] sharkLocation, int score)
 	{
 		
-		//removeItem
+		//variables
+		
+		int itemCols = 24;
+		int sharkCols = 8;
+		
+		//checkSharkLocationVsItemLocation
+		
+		for (int ic = 0; ic < itemCols; ic++)
+		{
+
+			for (int sc = 0; sc < sharkCols; sc++)
+			{
+
+				if ((sharkLocation[0][sc] == itemLocation[0][ic] && sharkLocation[1][sc] == itemLocation[1][ic]) && itemLocation[2][ic] == 1)
+				{
+
+					itemLocation[2][ic] = 0;
+					score = score + 1;
+					
+				}
+				
+				if ((sharkLocation[0][sc] == itemLocation[0][ic] && sharkLocation[1][sc] == itemLocation[1][ic]) && itemLocation[2][ic] == 2)
+				{
+
+					itemLocation[2][ic] = 0;
+					score = score - 1;
+					
+				}
+
+			}				
+		
+		}
 		
 		return(score);
 		
@@ -397,10 +438,34 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
-	public static boolean checkSharkLocationLoose(boolean loose)
+	public static boolean checkSharkLocationLoose(int[][] itemLocation, int[][] sharkLocation, boolean loose)
 	{
 		
-		//removeItem
+		//variables
+		
+		int itemCols = 24;
+		int sharkCols = 8;
+				
+		//checkSharkLocationVsItemLocation
+		
+		for (int ic = 0; ic < itemCols; ic++)
+		{
+
+			for (int sc = 0; sc < sharkCols; sc++)
+			{
+
+				if ((sharkLocation[0][sc] == itemLocation[0][ic] && sharkLocation[1][sc] == itemLocation[1][ic]) && itemLocation[2][ic] == 3)
+				{
+
+					itemLocation[2][ic] = 0;
+					System.out.print("BOOM! You hit a mine. Game Over");
+					loose = true;
+					
+				}
+
+			}				
+		
+		}
 		
 		return(loose);
 		
@@ -542,7 +607,7 @@ public class Game
 			
 		}
 		
-		if (sharkLocation[0][7] < 13)
+		if (sharkLocation[0][7] < 10)
 		{
 
 			if (sharkShift.equals("d"))
