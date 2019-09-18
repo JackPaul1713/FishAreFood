@@ -41,7 +41,7 @@ public class Game
 			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, defaultPixel, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
 			sharkShift = printGameScreen(gameScreen, score);
 
-			//Thread.sleep(speed); add with keyScanner
+			//Thread.sleep(speed); //add with keyScanner
 			
 			score = checkSharkLocationScore(itemLocation, sharkLocation, score);
 			loose = checkSharkLocationLoose(itemLocation, sharkLocation, loose);
@@ -354,19 +354,12 @@ public class Game
 		
 		//printScore
 		
-		System.out.print("\nFishRFood                            Score = " + score);
+		System.out.println("\nFishRFood                            Score = " + score);
 		
 		//printScreen
 		
 		for (int r = 0; r < rows; r++)
 		{
-			
-			if (r == 0)
-			{
-				
-				System.out.print("\n");
-				
-			}
 			
 			for (int c = 0; c < cols; c++)
 			{
@@ -458,7 +451,7 @@ public class Game
 				{
 
 					itemLocation[2][ic] = 0;
-					System.out.print("BOOM! You hit a mine. Game Over");
+					System.out.print("BOOM! You hit a mine. Game Over."); //"\n" if key scanners r added 
 					loose = true;
 					
 				}
