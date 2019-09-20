@@ -1,8 +1,11 @@
 package fishAreFood;
 
 import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Game
+//implements KeyListener
 {
 
 	public static int game() throws InterruptedException
@@ -656,6 +659,50 @@ public class Game
 		return(sharkLocation);
 		
 	}
+
+	/*@Override
+	public void keyPressed(KeyEvent e)
+	{
+		
+		String sharkShift = "";
+		
+		if (e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			
+			sharkShift = "u";
+			return(sharkShift);
+			
+		}
+		
+		if (e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			
+			sharkShift = "d";
+			return(sharkShift);
+			
+		}
+		
+		return(sharkShift);
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		
+		//Empty
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e)
+	{
+		
+		//Empty
+		// TODO Auto-generated method stub
+		
+	}*/
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
