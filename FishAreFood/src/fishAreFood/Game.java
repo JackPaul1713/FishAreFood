@@ -477,7 +477,7 @@ public class Game
 						
 					}
 					
-					System.out.print("\nM M M BOOM! You hit a mine!? GAME OVER. M M M M");
+					System.out.print("\nM M M  BOOM! You hit a mine!? GAME OVER.  M M M");
 					
 					loose = true;
 					
