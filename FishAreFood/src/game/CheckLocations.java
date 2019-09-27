@@ -23,7 +23,7 @@ public class CheckLocations
 				{
 
 					itemLocation[2][ic] = 0;
-					score = score + 1;
+					score = score + 100;
 					
 				}
 				
@@ -31,7 +31,7 @@ public class CheckLocations
 				{
 
 					itemLocation[2][ic] = 0;
-					score = score - 1;
+					score = score - 50;
 					
 				}
 
@@ -67,10 +67,8 @@ public class CheckLocations
 				{
 					
 					itemLocation[2][ic] = 0;
-
-					System.out.print("BOOM! You hit a mine. Game Over."); //"\n" if key scanners r added 
 					
-					System.out.print("\nFishRFood                            Score = " + score);
+					System.out.print("\nYou hit a mine. Game Over.    Final Score = " + score);
 					
 					for (int r = 0; r < rows; r++)
 					{
@@ -98,7 +96,7 @@ public class CheckLocations
 						
 					}
 					
-					System.out.print("\nM M M  BOOM! You hit a mine!? GAME OVER.  M M M");
+					System.out.print("\nM M M M M M M M M M BOOOOM! M M M M M M M M M M");
 					
 					loose = true;
 					

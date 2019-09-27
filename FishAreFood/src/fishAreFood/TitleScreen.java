@@ -25,7 +25,7 @@ public class TitleScreen
 	public static void dispName()
 	{
 		
-		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
+		System.out.println("\nO O O O O O O O O O O O O O O O O O O O O O O O");
 		System.out.println("O O O O O O O O  Fish R Food  O O O O O O O O O");
 		System.out.println("O O O O O O O O O O O O O O O O O O O O O O O O");
 		

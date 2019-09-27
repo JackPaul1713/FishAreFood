@@ -19,7 +19,7 @@ public class PrintGameScreen
 		
 		//printScore
 		
-		System.out.println("\nFishRFood                            Score = " + score);
+		System.out.println("\nFishRFood                           Score = " + score);
 		
 		//printScreen
 		
@@ -44,7 +44,7 @@ public class PrintGameScreen
 		
 		//getSharkShift
 	
-		//sharkShift = strInput.nextLine();
+		//-> sharkShift = strInput.nextLine();
 		
 		//returnSharkShift
 		
