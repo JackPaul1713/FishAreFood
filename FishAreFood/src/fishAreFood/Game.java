@@ -1,10 +1,12 @@
 package fishAreFood;
 
 import game.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Game
-{
-
+{	
+	
 	public static int game(int speed, String defaultPixel, String groundPixel, String plantPixel, String fishPixel, String trashPixel, String minePixel, String sharkPixel) throws InterruptedException
 	{
 		
@@ -12,7 +14,7 @@ public class Game
 		
 		int score = 0;
 		boolean loose = false;
-		String sharkShift;
+		String sharkShift = "";
 		int [][] plantLocation;
 		int [][] itemLocation;
 		int [][] sharkLocation;
@@ -25,19 +27,20 @@ public class Game
 		gameScreen = MakeScreens.makeGameScreen();
 		plantLocation = MakeLocations.makePlantLocation();
 		itemLocation = MakeLocations.makeItemLocation();
-		sharkLocation = MakeLocations.makeSharkLocation();
+		sharkLocation = MakeLocations.makeSharkLocation(); 
 		
 		while (loose == false)
 		{
 
 			gameScreen = SetGameScreen.setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, defaultPixel, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
-			sharkShift = PrintGameScreen.printGameScreen(gameScreen, score);
+			PrintGameScreen.printGameScreen(gameScreen, score);
 
-			Thread.sleep(speed); //add with keyScanner
+			sharkShift = CheckUorD.checkUorD(); 
+			//Thread.sleep(speed); //add with keyScanner for movement
 			
 			plantLocation = ShiftLocations.plantShift(plantLocation);
 			itemLocation = ShiftLocations.itemShift(itemLocation);
-			sharkLocation = ShiftLocations.sharkShift(sharkLocation, sharkShift); //takes keyScanner Input
+			sharkLocation = ShiftLocations.sharkShift(sharkLocation, sharkShift);
 			
 			score = CheckLocations.checkSharkLocationScore(itemLocation, sharkLocation, score);
 			loose = CheckLocations.checkSharkLocationLoose(gameScreen, itemLocation, sharkLocation, minePixel, score, loose);

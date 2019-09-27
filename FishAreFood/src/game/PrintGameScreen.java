@@ -1,11 +1,9 @@
 package game;
 
-import java.util.Scanner;
-
 public class PrintGameScreen
 {
 
-	public static String printGameScreen(String[][] gameScreen, int score)
+	public static void printGameScreen(String[][] gameScreen, int score)
 	{
 		
 		//variables
@@ -14,8 +12,6 @@ public class PrintGameScreen
 		int gameScreenCols = 24;
 		int rows = gameScreenRows;
 		int cols = gameScreenCols;
-		String sharkShift = "";
-		Scanner strInput = new Scanner(System.in);
 		
 		//printScore
 		
@@ -41,14 +37,6 @@ public class PrintGameScreen
 			}
 			
 		}
-		
-		//getSharkShift
-	
-		//-> sharkShift = strInput.nextLine();
-		
-		//returnSharkShift
-		
-		return(sharkShift);
 		
 	}
 	

@@ -10,6 +10,7 @@ public class EnterToContinue
 		
 		Scanner strInput = new Scanner(System.in);
 		strInput.nextLine();
+		strInput.close();
 		
 	}
 	

@@ -8,7 +8,7 @@ public class IntroScreen
 		
 		//variables
 		
-		String emptyPixel = "0 ";
+		String emptyPixel = "W ";
 		
 		String ep = emptyPixel;
 		String dp = defaultPixel;
@@ -52,8 +52,8 @@ public class IntroScreen
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
-		System.out.println(dp + sp + dp + dp + dp + dp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
-		System.out.println(dp + sp + sp + dp + dp + dp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
+		System.out.println(dp + dp + dp + dp + dp + dp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
+		System.out.println(dp + sp + dp + dp + dp + dp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + sp + sp + sp + sp + sp + sp + sp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + sp + sp + sp + sp + sp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + sp + sp + dp + dp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
@@ -68,12 +68,12 @@ public class IntroScreen
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
+		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + sp + dp + dp + dp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
-		System.out.println(dp + sp + sp + dp + sp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
+		System.out.println(dp + sp + sp + dp + dp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + sp + sp + sp + sp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + sp + sp + dp + sp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + sp + dp + dp + sp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
-		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.println(dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp + dp);
 		System.out.print(ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep + ep);

@@ -10,7 +10,6 @@ public class FishAreFood
 	
 		int score = 0; 
 		boolean play = true;
-		boolean firstTime = true;
 		
 		int introSpeed = 1000 * 1;
 		int gameSpeed = 1000 * 1 / 3;
@@ -25,14 +24,14 @@ public class FishAreFood
 		//action
 	
 		SetScreenSize.setScreen();
-		play = TitleScreen.titleScreen(score); firstTime = false;
+		play = TitleScreen.titleScreen(score);
 	
 		while (play == true)
 		{
 		
 			IntroScreen.introScreen(introSpeed, defaultPixel, sharkPixel);
 			score = Game.game(gameSpeed, defaultPixel, groundPixel, plantPixel, fishPixel, trashPixel, minePixel, sharkPixel);
-			EnterToContinue.enterToContinue();
+			Thread.sleep(1000 * 3);
 			play = TitleScreen.titleScreen(score);
 	
 		}
