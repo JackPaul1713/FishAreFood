@@ -1,6 +1,6 @@
 package fishAreFood;
 
-public class FishAreFood
+public class FishAreFoodMain
 {
 
 	public static void main(String[] args) throws InterruptedException
