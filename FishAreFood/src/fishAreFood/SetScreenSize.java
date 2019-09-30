@@ -16,7 +16,7 @@ public class SetScreenSize
 		String boarderPixel = "[]";
 		String enterToContinue;
 		
-		String [][] setScreen = new String [rows][cols];
+		String[][] setScreen = new String[rows][cols];
 		
 		Scanner blankInput = new Scanner(System.in);
 		

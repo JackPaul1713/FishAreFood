@@ -1,29 +1,31 @@
 package fishAreFood;
 
+<<<<<<< HEAD
 import java.util.Scanner;
+=======
+import game.*;
+>>>>>>> branch 'master' of https://github.com/JackPaul1713/FishAreFood.git
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game
+<<<<<<< HEAD
 //implements KeyListener
 {
 
 	public static int game() throws InterruptedException
+=======
+{	
+	
+	public static int game(int speed, String defaultPixel, String groundPixel, String plantPixel, String fishPixel, String trashPixel, String minePixel, String sharkPixel) throws InterruptedException
+>>>>>>> branch 'master' of https://github.com/JackPaul1713/FishAreFood.git
 	{
 		
 		//variables
 		
 		int score = 0;
-		int speed = 1 * 1000 / 3;
 		boolean loose = false;
-		String sharkShift;
-		String defaultPixel = "- ";
-		String groundPixel = "M ";
-		String plantPixel = "| ";
-		String fishPixel = "F ";
-		String trashPixel = "T ";
-		String minePixel = "X ";
-		String sharkPixel = "S ";
+		String sharkShift = "";
 		int [][] plantLocation;
 		int [][] itemLocation;
 		int [][] sharkLocation;
@@ -32,26 +34,27 @@ public class Game
 		
 		//action
 		
-		defaultScreen = makeDefaultScreen(defaultPixel);
-		gameScreen = makeGameScreen();
-		plantLocation = makePlantLocation();
-		itemLocation = makeItemLocation();
-		sharkLocation = makeSharkLocation();
+		defaultScreen = MakeScreens.makeDefaultScreen(defaultPixel);
+		gameScreen = MakeScreens.makeGameScreen();
+		plantLocation = MakeLocations.makePlantLocation();
+		itemLocation = MakeLocations.makeItemLocation();
+		sharkLocation = MakeLocations.makeSharkLocation(); 
 		
 		while (loose == false)
 		{
 
-			gameScreen = setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, defaultPixel, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
-			sharkShift = printGameScreen(gameScreen, score);
+			gameScreen = SetGameScreen.setGameScreen(defaultScreen, gameScreen, plantLocation, itemLocation, sharkLocation, defaultPixel, plantPixel, groundPixel, fishPixel, trashPixel, minePixel, sharkPixel);
+			PrintGameScreen.printGameScreen(gameScreen, score);
 
-			Thread.sleep(speed); //add with keyScanner
+			sharkShift = CheckUorD.checkUorD(); 
+			//Thread.sleep(speed); //add with keyScanner for movement
 			
-			plantLocation = plantShift(plantLocation);
-			itemLocation = itemShift(itemLocation);
-			sharkLocation = sharkShift(sharkLocation, sharkShift);
+			plantLocation = ShiftLocations.plantShift(plantLocation);
+			itemLocation = ShiftLocations.itemShift(itemLocation);
+			sharkLocation = ShiftLocations.sharkShift(sharkLocation, sharkShift);
 			
-			score = checkSharkLocationScore(itemLocation, sharkLocation, score);
-			loose = checkSharkLocationLoose(gameScreen, itemLocation, sharkLocation, minePixel, score, loose);
+			score = CheckLocations.checkSharkLocationScore(itemLocation, sharkLocation, score);
+			loose = CheckLocations.checkSharkLocationLoose(gameScreen, itemLocation, sharkLocation, minePixel, score, loose);
 
 		}
 		
@@ -59,6 +62,7 @@ public class Game
 		
 	}
 	
+<<<<<<< HEAD
 ///////////////////////////////////////////////////////////////////////////////////
 	
 	public static String[][] makeDefaultScreen(String dp)
@@ -701,4 +705,6 @@ public class Game
 	
 ///////////////////////////////////////////////////////////////////////////////////
 	
+=======
+>>>>>>> branch 'master' of https://github.com/JackPaul1713/FishAreFood.git
 }
